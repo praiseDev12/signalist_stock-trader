@@ -13,6 +13,12 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog"
 
+/**
+ * Renders a CommandPrimitive container preconfigured with command-palette styling and a `data-slot="command"`.
+ *
+ * @param className - Additional class names merged with the component's default styling.
+ * @returns A CommandPrimitive element configured as the command container.
+ */
 function Command({
   className,
   ...props
@@ -29,6 +35,17 @@ function Command({
   )
 }
 
+/**
+ * Render a Dialog that hosts a cmdk Command palette with an accessible title and description.
+ *
+ * @param title - Visible label for the command palette (rendered inside a visually hidden DialogTitle for accessibility)
+ * @param description - Short descriptive text (rendered inside a visually hidden DialogDescription for accessibility)
+ * @param children - Elements to render inside the Command surface (inputs, groups, items, etc.)
+ * @param className - Additional CSS classes merged into the DialogContent container
+ * @param showCloseButton - If `true`, render the DialogContent close button; otherwise hide it
+ * @param props - Additional props are forwarded to the Dialog root
+ * @returns A Dialog React element containing the styled Command palette
+ */
 function CommandDialog({
   title = "Command Palette",
   description = "Search for a command to run...",
@@ -60,6 +77,11 @@ function CommandDialog({
   )
 }
 
+/**
+ * Renders the command palette search input with a leading search icon and forwards all input props.
+ *
+ * @returns A DOM element containing the styled command input and its leading search icon
+ */
 function CommandInput({
   className,
   ...props
@@ -82,6 +104,12 @@ function CommandInput({
   )
 }
 
+/**
+ * Renders a styled Cmdk command list container for command items.
+ *
+ * The returned element is a CommandPrimitive.List with a `data-slot="command-list"`,
+ * default max-height and vertical scrolling, and any `className` merged into its styles.
+ */
 function CommandList({
   className,
   ...props
@@ -98,6 +126,13 @@ function CommandList({
   )
 }
 
+/**
+ * Renders the standardized empty state for the command list.
+ *
+ * Additional props are forwarded to the underlying Cmdk `Empty` primitive.
+ *
+ * @returns A React element representing the command list empty state
+ */
 function CommandEmpty({
   ...props
 }: React.ComponentProps<typeof CommandPrimitive.Empty>) {
@@ -110,6 +145,14 @@ function CommandEmpty({
   )
 }
 
+/**
+ * Renders a styled wrapper around the Cmdk `Group` primitive for grouping command items.
+ *
+ * The element includes a `data-slot="command-group"` attribute and applies standardized
+ * typography and spacing classes; any `className` provided is merged with the defaults.
+ *
+ * @returns The rendered command group element
+ */
 function CommandGroup({
   className,
   ...props
@@ -126,6 +169,11 @@ function CommandGroup({
   )
 }
 
+/**
+ * Renders a styled separator used to divide groups or items in the command palette.
+ *
+ * @returns A `CommandPrimitive.Separator` element with the `data-slot="command-separator"` attribute and default separator styling; merges any provided `className`.
+ */
 function CommandSeparator({
   className,
   ...props
@@ -139,6 +187,15 @@ function CommandSeparator({
   )
 }
 
+/**
+ * Renders a styled command palette item that forwards props to the underlying Cmdk `CommandPrimitive.Item`.
+ *
+ * The rendered element includes a `data-slot="command-item"` attribute and applies built-in styles for
+ * selected and disabled states, icon sizing, spacing, and focus behavior.
+ *
+ * @param props - Props forwarded to the underlying `CommandPrimitive.Item` (for example: `children`, `onSelect`, `disabled`, etc.)
+ * @returns A JSX element representing a command list item with the component's default styling
+ */
 function CommandItem({
   className,
   ...props
@@ -155,6 +212,13 @@ function CommandItem({
   )
 }
 
+/**
+ * Renders a styled span for displaying a keyboard shortcut hint within a command item.
+ *
+ * @param className - Optional additional CSS classes to apply to the span.
+ * @param props - Additional span attributes and event handlers forwarded to the element.
+ * @returns A `span` element with `data-slot="command-shortcut"` and styling for right-aligned, small, widely spaced shortcut text.
+ */
 function CommandShortcut({
   className,
   ...props
