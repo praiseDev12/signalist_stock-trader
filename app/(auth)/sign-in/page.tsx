@@ -4,7 +4,6 @@ import { useForm } from 'react-hook-form';
 import { Button } from '@/components/ui/button';
 import InputField from '@/components/forms/InputField';
 import { toast } from 'sonner';
-import { signInEmail } from 'better-auth/api';
 import { useRouter } from 'next/navigation';
 import FooterLInk from '@/components/forms/FooterLInk';
 import { signInWithEmail } from '@/lib/actions/auth.actions';

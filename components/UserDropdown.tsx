@@ -13,19 +13,14 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from './ui/button';
 import { LogOut } from 'lucide-react';
 import NavItems from './NavItems';
+import { signOut } from '@/lib/actions/auth.actions';
 
-const UserDropdown = () => {
+const UserDropdown = ({ user }: { user: User }) => {
 	const router = useRouter();
 
 	const handleSignOut = async () => {
+		await signOut();
 		router.push('/sign-in');
-	};
-
-	const user = {
-		name: 'Praise',
-		email: 'abuchipraise',
-		avatar:
-			'https://lh3.googleusercontent.com/a/ACg8ocKRBllEIJfBlF0Gcey1mBZcfcSvufYHvjoVrZg5V8eIDKL4A9U=s288-c-no',
 	};
 
 	return (
@@ -35,7 +30,7 @@ const UserDropdown = () => {
 					variant='ghost'
 					className='flex items-center gap-3 text-gray-400 hover:text-yellow-500'>
 					<Avatar className='w-8 h-8'>
-						<AvatarImage src={user.avatar} />
+						{/* <AvatarImage src={user.avatar} /> */}
 						<AvatarFallback className='bg-yellow-500 text-yellow-900 text-sm font-bold'>
 							{user.name[0]}
 						</AvatarFallback>
@@ -51,7 +46,7 @@ const UserDropdown = () => {
 				<DropdownMenuLabel>
 					<div className='flex relative items-center gap-3 py-2'>
 						<Avatar className='w-10 h-10'>
-							<AvatarImage src={user.avatar} />
+							{/* <AvatarImage src={user.avatar} /> */}
 							<AvatarFallback className='bg-yellow-500 text-yellow-900 text-sm font-bold'>
 								{user.name[0]}
 							</AvatarFallback>
